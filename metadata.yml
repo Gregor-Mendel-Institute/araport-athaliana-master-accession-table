@@ -1,8 +1,134 @@
 ---
-description: "Allows the user to query the A.thaliana master accession list using the passthrough type of Araport web service"
-name: a_thaliana_master_accession_list
-type: passthrough
-url: "https://www.googleapis.com/fusiontables/v2/query"
-version: 0.1
+version: 0.1.0
+name: master_accession_list
+description: "Allows the user to query the A.thaliana master accession list"
+type: query
+url: ""
+icon: gmi.png
+tags:
+    - 'accessions'
 whitelist:
-  - www.googleapis.com
+  - api.araport.org
+  - apps.araport.org
+
+endpoints:
+    /search:
+        parameters:
+            - name: id
+              description: The ID of the accession
+              type: number
+              required: false
+            - name: name
+              descirption: The name of the accession
+              type: string
+              required: false
+            - name: name
+              descirption: The name of the accession
+              type: string
+              required: false
+            - name: country
+              description: The country of the accession (i.e. SWE)
+              type: string
+              required: false
+            - name: sitename
+              description: The sitename of the accession
+              type: string
+              required false
+            - name: collector
+              description: The collector of the accession 
+              type: string
+              required: false
+            - name: collectiondate
+              description: The collectiondate of the accession
+              type: date
+              required false
+            - name: CS_number
+              description: The Stock center number of the accession 
+              type: string
+              required: false
+            - name: pilot_projects
+              description: The pilot projects of the accession
+              type: string
+              required false
+            - name: Nordborg2005
+              description: Whether the accession was is used in the Nordborg2005 set
+              type: string
+              required false
+              enum:
+                - 'Y'
+                - 'N'
+            - name: Nordborg2012
+              description: Whether the accession was is used in the Nordborg2012 set
+              type: string
+              required false
+              enum:
+                - 'Y'
+                - 'N'
+            - name: Cao2011
+              description: Whether the accession was is used in the Cao2011 set
+              type: string
+              required false
+              enum:
+                - 'Y'
+                - 'N'
+            - name: Long2013
+              description: Whether the accession was is used in the Long2013 set
+              type: string
+              required false
+              enum:
+                - 'Y'
+                - 'N'
+            - name: Schmitz2013
+              description: Whether the accession was is used in the Schmitz2013 set
+              type: string
+              required false
+              enum:
+                - 'Y'
+                - 'N'
+            - name: 1001genomes
+              description: Whether the accession was is used in the 1001genomes set
+              type: string
+              required false
+              enum:
+                - 'Y'
+                - 'N'
+            - name: seq_by
+              description: Who sequenced the accession
+              type: string
+              required false
+            - name: offset
+              description: Skips the first <number> rows
+              type: number
+              required: false
+              format: integer
+            - name: limit
+              description: How many records should be retrieved
+              type: number
+              required false
+              format: integer
+            - name: orderby
+              description: Specifies the column and the direction for sorting the output records (i.e. latitude ASC)
+              type: string
+              required: false
+    /list:
+        parameters: 
+            - name: offset
+              description: Skips the first <number> rows
+              type: number
+              required: false
+              format: integer
+            - name: limit
+              description: How many records should be retrieved
+              type: number
+              required false
+              format: integer
+            - name: orderby
+              description: Specifies the column and the direction for sorting the output records (i.e. latitude ASC)
+              type: string
+              required: false
+            
+authors:
+    - name: Ümit Seren
+      email: uemit.seren@gmi.oeaw.ac.at
+      sponsor_organization: GMI (Gregor Mendel Institute)
+      sponsor_uri: http://www.gmi.oeaw.ac.at
