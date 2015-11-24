@@ -8,19 +8,27 @@ FIELDS = ['id','name','country','sitename','latitude','longitude','collector','c
 
 def search(arg):
     where = _get_where_from_params(arg)
-    if len(where) > 0:
-        where = 'WHERE %s' % 'AND'.join(where)
-    order_by = 'ORDER BY %s' % arg['orderby'] if 'orderby' in arg else ''
-    offset = 'OFFSET %s' % arg['offset'] if 'offset' in arg else ''
-    limit = 'LIMIT %s' % arg['limit'] if 'limit' in arg else ''
+    where = 'WHERE %s' % 'AND'.join(where) if len(where) > 0 else ''
+    order_by = 'ORDER BY %s' % arg['ORDERBY'] if 'ORDERBY' in arg else ''
+    offset = 'OFFSET %s' % arg['OFFSET'] if 'OFFSET' in arg else ''
+    limit = 'LIMIT %s' % arg['LIMIT'] if 'LIMIT' in arg else ''
     query = "SELECT %s FROM %s %s %s %s %s" % (','.join(FIELDS), FUSION_TABLE_ID, where,order_by,offset,limit)
-    print query
     payload = {'sql':query,'key':API_KEY}
     ret = requests.get(FUSION_QUERY_URL, params=payload)
-    return ret
+    if ret.ok:
+        print json.dumps(ret.json())
+        print '---'
+    else:
+        raise Exception(ret.text + query)
 
 def list(arg):
-    return search(arg)
+    for key in ('ORDERBY','LIMIT','OFFSET'):
+        _flatten_param(arg,key)    
+    search(arg)
+
+def _flatten_param(arg,key):
+    if key in arg and len(arg[key]) > 0:
+        arg[key] = arg[key][0]
 
 def _get_where_from_params(args):
     filtered = []
@@ -28,4 +36,3 @@ def _get_where_from_params(args):
         if arg in FIELDS:
             filtered.append("'%s' = '%s'" % (arg,value))
     return filtered 
-

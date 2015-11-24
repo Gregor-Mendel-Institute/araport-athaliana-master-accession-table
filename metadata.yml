@@ -1,131 +1,133 @@
 ---
-version: 0.1.0
-name: master_accession_list
 description: "Allows the user to query the A.thaliana master accession list"
+name: master_accession_list
 type: query
-url: ""
+url: "https://www.google.com/fusiontables/DataSource?docid=16I6HWZd8PrvjlzvcKsCWShHii8RaMA_vux8sTQPI#rows:id=1"
+version: 0.1.0
 icon: gmi.png
+whitelist:
+    - www.googleapis.com
 tags:
     - 'accessions'
-whitelist:
-  - api.araport.org
-  - apps.araport.org
 
 endpoints:
     /search:
         parameters:
             - name: id
-              description: The ID of the accession
+              description: The ID of the accession (i.e. "6909")
               type: number
               required: false
             - name: name
-              descirption: The name of the accession
-              type: string
-              required: false
-            - name: name
-              descirption: The name of the accession
+              descirption: The name of the accession (i.e. "Col-0")
               type: string
               required: false
             - name: country
-              description: The country of the accession (i.e. SWE)
+              description: The country of the accession (i.e. "SWE")
               type: string
               required: false
             - name: sitename
-              description: The sitename of the accession
+              description: The sitename of the accession (i.e. "Col")
               type: string
-              required false
+              required: false
             - name: collector
-              description: The collector of the accession 
+              description: The collector of the accession (i.e. "Albert Kranz") 
               type: string
               required: false
             - name: collectiondate
               description: The collectiondate of the accession
               type: date
-              required false
+              required: false
             - name: CS_number
-              description: The Stock center number of the accession 
+              description: The Stock center number of the accession (i.e. "CS76778")
               type: string
               required: false
             - name: pilot_projects
               description: The pilot projects of the accession
               type: string
-              required false
+              required: false
             - name: Nordborg2005
               description: Whether the accession was is used in the Nordborg2005 set
               type: string
-              required false
+              required: false
               enum:
+                - ''
                 - 'Y'
                 - 'N'
             - name: Nordborg2012
               description: Whether the accession was is used in the Nordborg2012 set
               type: string
-              required false
+              required: false
               enum:
+                - ''
                 - 'Y'
                 - 'N'
             - name: Cao2011
               description: Whether the accession was is used in the Cao2011 set
               type: string
-              required false
+              required: false
               enum:
+                - ''
                 - 'Y'
                 - 'N'
             - name: Long2013
               description: Whether the accession was is used in the Long2013 set
               type: string
-              required false
+              required: false
               enum:
+                - ''
                 - 'Y'
                 - 'N'
             - name: Schmitz2013
               description: Whether the accession was is used in the Schmitz2013 set
               type: string
-              required false
+              required: false
               enum:
+                - ''
                 - 'Y'
                 - 'N'
             - name: 1001genomes
               description: Whether the accession was is used in the 1001genomes set
               type: string
-              required false
+              required: false
               enum:
+                - ''
                 - 'Y'
                 - 'N'
             - name: seq_by
-              description: Who sequenced the accession
+              description: Who sequenced the accession (i.e. "MPI")
               type: string
-              required false
-            - name: offset
+              required: false
+            - name: OFFSET
               description: Skips the first <number> rows
               type: number
               required: false
               format: integer
-            - name: limit
+            - name: LIMIT
               description: How many records should be retrieved
               type: number
-              required false
+              required: false
               format: integer
-            - name: orderby
+            - name: ORDERBY
               description: Specifies the column and the direction for sorting the output records (i.e. latitude ASC)
               type: string
               required: false
     /list:
         parameters: 
-            - name: offset
+            - name: OFFSET
               description: Skips the first <number> rows
               type: number
               required: false
               format: integer
-            - name: limit
+            - name: LIMIT
               description: How many records should be retrieved
               type: number
-              required false
+              required: false
               format: integer
-            - name: orderby
+            - name: ORDERBY
               description: Specifies the column and the direction for sorting the output records (i.e. latitude ASC)
               type: string
               required: false
+            
             
 authors:
     - name: Ümit Seren
