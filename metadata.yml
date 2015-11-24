@@ -1,0 +1,8 @@
+---
+description: "Allows the user to query the A.thaliana master accession list using the passthrough type of Araport web service"
+name: a_thaliana_master_accession_list
+type: passthrough
+url: "https://www.googleapis.com/fusiontables/v2/query"
+version: 0.1
+whitelist:
+  - www.googleapis.com
