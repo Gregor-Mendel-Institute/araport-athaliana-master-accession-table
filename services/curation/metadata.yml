@@ -1,0 +1,58 @@
+---
+description: "Service to curate accessions in the master accession list"
+name: curate_master_accession_list
+type: generic
+url: "https://www.google.com/fusiontables/DataSource?docid=16I6HWZd8PrvjlzvcKsCWShHii8RaMA_vux8sTQPI#rows:id=1"
+version: 0.1.0
+icon: gmi.png
+main_module: services.curation.main.py
+whitelist:
+    - www.googleapis.com
+tags:
+    - 'accessions'
+    - 'curation'
+
+endpoints:
+    /search:
+        parameters:
+            - name: id
+              description: The ID of the accession (i.e. "6909")
+              type: number
+              required: true
+            - name: name
+              descirption: The name of the accession (i.e. "Col-0")
+              type: string
+              required: false
+            - name: country
+              description: The country of the accession (i.e. "SWE")
+              type: string
+              required: false
+            - name: sitename
+              description: The sitename of the accession (i.e. "Col")
+              type: string
+              required: false
+            - name: collector
+              description: The collector of the accession (i.e. "Albert Kranz") 
+              type: string
+              required: false
+            - name: collectiondate
+              description: The collectiondate of the accession
+              type: date
+              required: false
+            - name: CS_number
+              description: The Stock center number of the accession (i.e. "CS76778")
+              type: string
+              required: false
+    /list:
+        parameters: 
+            - name: id
+              description: The ID of the accession (i.e. "6909")
+              type: number
+              required: true
+            
+            
+authors:
+    - name: Ümit Seren
+      email: uemit.seren@gmi.oeaw.ac.at
+      sponsor_organization: GMI (Gregor Mendel Institute)
+      sponsor_uri: http://www.gmi.oeaw.ac.at

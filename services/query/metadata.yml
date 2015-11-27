@@ -5,6 +5,7 @@ type: query
 url: "https://www.google.com/fusiontables/DataSource?docid=16I6HWZd8PrvjlzvcKsCWShHii8RaMA_vux8sTQPI#rows:id=1"
 version: 0.1.0
 icon: gmi.png
+main_module: services.query.main.py
 whitelist:
     - www.googleapis.com
 tags:
