@@ -6,6 +6,10 @@ url: "https://www.google.com/fusiontables/DataSource?docid=16I6HWZd8PrvjlzvcKsCW
 version: 0.1.0
 icon: gmi.png
 main_module: services.curation.main.py
+requirements:
+    - google-api-python-client
+    - gspread
+
 whitelist:
     - www.googleapis.com
 tags:
