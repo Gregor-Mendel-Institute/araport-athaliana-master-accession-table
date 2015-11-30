@@ -9,9 +9,12 @@ main_module: services.curation.main.py
 requirements:
     - google-api-python-client
     - gspread
+    - PyOpenSSL
 
 whitelist:
-    - www.googleapis.com
+    - accounts.google.com
+    - spreadsheets.google.com
+
 tags:
     - 'accessions'
     - 'curation'

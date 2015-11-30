@@ -16,19 +16,12 @@ def search(arg):
     payload = {'sql':query,'key':API_KEY}
     ret = requests.get(FUSION_QUERY_URL, params=payload)
     if ret.ok:
-        print json.dumps(ret.json())
-        print '---'
+        return 'application/json',json.dumps(ret.json())
     else:
         raise Exception(ret.text + query)
 
 def list(arg):
-    for key in ('ORDERBY','LIMIT','OFFSET'):
-        _flatten_param(arg,key)    
-    search(arg)
-
-def _flatten_param(arg,key):
-    if key in arg and len(arg[key]) > 0:
-        arg[key] = arg[key][0]
+    return search(arg)
 
 def _get_where_from_params(args):
     filtered = []

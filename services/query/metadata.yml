@@ -1,7 +1,7 @@
 ---
 description: "Allows the user to query the A.thaliana master accession list"
 name: master_accession_list
-type: query
+type: generic
 url: "https://www.google.com/fusiontables/DataSource?docid=16I6HWZd8PrvjlzvcKsCWShHii8RaMA_vux8sTQPI#rows:id=1"
 version: 0.1.0
 icon: gmi.png
