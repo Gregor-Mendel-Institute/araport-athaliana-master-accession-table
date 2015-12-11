@@ -21,7 +21,7 @@ def search(arg):
             cols = data['columns']
             col_length = len(cols)
             rows = data['rows']
-            data['rows'] = [{cols[i]:row[i] for i in xrange(0,col_length)} for row in rows]
+            data= [{cols[i]:row[i] for i in xrange(0,col_length)} for row in rows]
         return 'application/json',json.dumps(data)
     else:
         raise Exception(ret.text + query)

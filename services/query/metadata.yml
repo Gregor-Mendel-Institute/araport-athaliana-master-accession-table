@@ -115,6 +115,7 @@ endpoints:
             - name: alt_format
               description: Set to true, if the result should be returend in a key/value format [{key:value}] instead of a simpel array
               type: boolean
+              default: false
               required: false
               
     /list:
@@ -136,6 +137,7 @@ endpoints:
             - name: alt_format
               description: Set to true, if the result should be returend in a key/value format [{key:value}] instead of a simpel array
               type: boolean
+              default: false
               required: false
             
             
