@@ -16,7 +16,13 @@ def search(arg):
     payload = {'sql':query,'key':API_KEY}
     ret = requests.get(FUSION_QUERY_URL, params=payload)
     if ret.ok:
-        return 'application/json',json.dumps(ret.json())
+        data = ret.json()
+        if 'alt_format' in arg and arg['alt_format'] != False:
+            cols = data['columns']
+            col_length = len(cols)
+            rows = data['rows']
+            data['rows'] = [{cols[i]:row[i] for i in xrange(0,col_length)} for row in rows]
+        return 'application/json',json.dumps(data)
     else:
         raise Exception(ret.text + query)
 
