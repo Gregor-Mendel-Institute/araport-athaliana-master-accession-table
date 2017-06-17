@@ -4,7 +4,7 @@ import requests
 FUSION_QUERY_URL = "https://www.googleapis.com/fusiontables/v2/query"
 FUSION_TABLE_ID = "16I6HWZd8PrvjlzvcKsCWShHii8RaMA_vux8sTQPI"
 API_KEY = "AIzaSyDDYAfEQUBkHy6_0ysfwIRe6PucjpVoVFE"
-FIELDS = ['id','name','country','sitename','latitude','longitude','collector','collectiondate','CS_number','pilot_projects','Nordborg2005','Nordborg2012','Cao2011','Schmitz2013','Long2013','1001genomes','seq_by']
+FIELDS = ['id','name','country','sitename','latitude','longitude','collector','collectiondate','CS_number','pilot_projects','Nordborg2005','Nordborg2012','Cao2011','Schmitz2013','Long2013','"1001genomes"','seq_by']
 
 def search(arg):
     where = _get_where_from_params(arg)
@@ -34,4 +34,4 @@ def _get_where_from_params(args):
     for arg,value in args.iteritems():
         if arg in FIELDS:
             filtered.append("'%s' = '%s'" % (arg,value))
-    return filtered 
+    return filtered
